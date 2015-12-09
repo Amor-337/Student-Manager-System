@@ -190,67 +190,7 @@ HCURSOR CMyDlg::OnQueryDragIcon()
 	return (HCURSOR) m_hIcon;
 }
 
-void CMyDlg::OnOK() //IDOK按纽的BN_CLICKED  单击OK按纽时响应
-{
-	// TODO: Add extra validation here
-	CString str;
-	Czhuyemian zy;
-	if((GetDlgItem(IDC_EDIT1)->GetWindowText(str),str=="曹姣姣")&&
-		(GetDlgItem(IDC_EDIT2)->GetWindowText(str),str=="941107"))
-	{
-		CDialog::OnOK();  
-		zy.DoModal();
-	}
-	else
-		MessageBox("信息有误!");
-}
 
-void CMyDlg::OnButton1() 
-{
-	// TODO: Add your control notification handler code here
-	Czhuce zc;
-	CDialog::OnOK();
-	zc.DoModal();
-}
-
-HBRUSH CMyDlg::OnCtlColor(CDC* pDC, CWnd* pWnd, UINT nCtlColor) 
-{
-	HBRUSH hbr = CDialog::OnCtlColor(pDC, pWnd, nCtlColor);
-	
-	CFont font;
-	// TODO: Change any attributes of the DC here
-	if(pWnd->GetDlgCtrlID()==IDC_STATIC1)
-	{
-		font.CreatePointFont(200,"华文行楷",GetDC());
-		pDC->SetTextColor(RGB(255,255,255));
-		pDC->SetBkMode(TRANSPARENT);
-		pDC->SelectObject(&font);
-//		font.DeleteObject();
-	}
-
-	((CEdit*)(GetDlgItem(IDC_EDIT2)))->SetPasswordChar('*');
-	if(pWnd->GetDlgCtrlID()==IDC_EDIT1||pWnd->GetDlgCtrlID()==IDC_EDIT2)
-	{
-		font.CreatePointFont(90,"华文行楷",GetDC());
-		pDC->SetTextColor(RGB(255,255,255));
-		pDC->SetBkMode(TRANSPARENT);
-		pDC->SetTextColor(RGB(0,100,255));
-		pDC->SelectObject(&font);
-    	font.DeleteObject();
-	}
-
-	if(pWnd->GetDlgCtrlID()==IDC_STATIC3||pWnd->GetDlgCtrlID()==IDC_STATIC2)
-	{
-		font.CreatePointFont(120,"华文行楷",GetDC());
-		pDC->SetTextColor(RGB(255,255,255));
-		pDC->SetBkMode(TRANSPARENT);
-		pDC->SetTextColor(RGB(255,255,0));
-		pDC->SelectObject(&font);
-//		font.DeleteObject();
-	}
-	// TODO: Return a different brush if the default is not desired
-	if(pWnd->GetDlgCtrlID()!=IDC_EDIT1&&pWnd->GetDlgCtrlID()!=IDC_EDIT2)
-		return brush;
 	else return hbr;
 }
 
